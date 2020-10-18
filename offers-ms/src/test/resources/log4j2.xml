@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+        <!--  console appender -->
+            <PatternLayout>
+                <pattern>
+                <!--  pattern -->
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </Console>
+        <Console name="Application-Appender" target="SYSTEM_OUT">
+        <!--  application appender -->
+            <PatternLayout>
+                <pattern>
+                <!--  pattern -->
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %c{1} PID_%X{PID}_%X{USER} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="Console-Appender" />
+        </Root>
+        <Logger name="com.worldpay.Application" level="info" additivity="false">
+            <AppenderRef ref="Console-Appender" />
+        </Logger>
+        
+        <Logger name="com.worldpay" level="debug" additivity="false">
+            <AppenderRef ref="Application-Appender" />
+        </Logger>
+    </Loggers>
+    
+    
+</Configuration>
